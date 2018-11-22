@@ -1,15 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Document</title>
-  </head>
-  <body>
-    <h1>Roni's MadLib Story</h1>
-    <h3 style="color: purple">
-      <b>{{ complete_story_string }}</b>
-    </h3>
-  </body>
-</html>
+<!-- Extending Base Template -->
+{% extends 'base.html' %}
+
+<!-- Tile Content -->
+{% block title %} Roni's MadLib Story{% endblock %}
+
+<!-- Body Content -->
+{% block body %}
+<h1>Roni's MadLib Story</h1>
+<h3 style="color: purple">
+  <b>{{ complete_story_string }}</b>
+</h3>
+{% endblock%}

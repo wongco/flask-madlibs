@@ -1,43 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Document</title>
-  </head>
-  <body>
-    <form action="/story">
-      <h1>Madlibs</h1>
-      <p>
-        <label for="place">place:</label>
-        <input type="text" name="place" id="place" />
-      </p>
-      <p>
-        <label for="noun">noun:</label>
-        <input type="text" name="noun" id="noun" />
-      </p>
-      <p>
-        <label for="verb">verb:</label>
-        <input type="text" name="verb" id="verb" />
-      </p>
-      <p>
-        <label for="adjective">adjective:</label>
-        <input type="text" name="adjective" id="adjective" />
-      </p>
-      <p>
-        <label for="plural_noun">plural_noun:</label>
-        <input type="text" name="plural_noun" id="plural_noun" />
-      </p>
-      <p>
-        <input
-          type="hidden"
-          name="current_story"
-          id="plural_noun"
-          value="{{ current_story_data }}"
-        />
-      </p>
-      <p><button type="submit">Submit</button></p>
-    </form>
-  </body>
-</html>
+<!-- Extending Base Template -->
+{% extends 'base.html' %}
+
+<!-- Tile Content -->
+{% block title %} MadLib Word Inputs {% endblock %}
+
+<!-- Body Content -->
+{% block body %}
+<form action="/story">
+  <h1>Madlibs</h1>
+  <p>
+    <label for="place">place:</label>
+    <input type="text" name="place" id="place" />
+  </p>
+  <p>
+    <label for="noun">noun:</label> <input type="text" name="noun" id="noun" />
+  </p>
+  <p>
+    <label for="verb">verb:</label> <input type="text" name="verb" id="verb" />
+  </p>
+  <p>
+    <label for="adjective">adjective:</label>
+    <input type="text" name="adjective" id="adjective" />
+  </p>
+  <p>
+    <label for="plural_noun">plural_noun:</label>
+    <input type="text" name="plural_noun" id="plural_noun" />
+  </p>
+  <p>
+    <input
+      type="hidden"
+      name="current_story"
+      id="plural_noun"
+      value="{{ current_story_data }}"
+    />
+  </p>
+  <p><button type="submit">Submit</button></p>
+</form>
+{% endblock%}
