@@ -13,8 +13,10 @@
     />
   </head>
   <body class="container">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">Roni's Mad Libs</a>
+    <nav
+      class="navbar navbar-expand-lg navbar-dark bg-dark mb-3 rounded-bottom"
+    >
+      <a class="navbar-brand" href="#">Roni's Maaaaaad Libs</a>
       <button
         class="navbar-toggler"
         type="button"
@@ -29,7 +31,7 @@
       <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="#"
+            <a class="nav-link" href="/"
               >Home <span class="sr-only">(current)</span></a
             >
           </li>
@@ -37,8 +39,9 @@
         <span class="navbar-text">Designed by Ronihe & WongCo</span>
       </div>
     </nav>
-    <div class="card mx-auto" style="width: 18rem;">
-      <div class="card-header">Roni's Mad Libs</div>
+    <!-- <div class="card mx-auto" style="width: 40rem;"> -->
+    <div class="card mx-auto" style="width: 80%">
+      <div class="card-header text-center h2 mb-2">Roni's Mad Libs</div>
       {% block body %} BODY CONTENT GOES HERE {% endblock %}
     </div>
 

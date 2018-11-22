@@ -6,8 +6,7 @@
 
 <!-- Body Content -->
 {% block body %}
-<form action="/story">
-  <h1>Madlibs</h1>
+<form class="p-2 text-center" action="/story">
   <p>
     <label for="place">place:</label>
     <input type="text" name="place" id="place" />
@@ -34,6 +33,6 @@
       value="{{ current_story_data }}"
     />
   </p>
-  <p><button type="submit">Submit</button></p>
+  <button class="btn btn-secondary" type="submit">Submit</button>
 </form>
 {% endblock%}
