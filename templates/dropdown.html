@@ -7,7 +7,7 @@
 <!-- Body Content -->
 {% block body %}
 <form class="p-2" action="/form" method="GET">
-  <select class="form-control" name="selection">
+  <select class="form-control mb-2" name="selection">
     {% for story_option_name in stories %}
     <option value="{{ story_option_name }}">{{ story_option_name }}</option>
     {% endfor %}

@@ -9,28 +9,30 @@
 <form class="p-2 text-center" action="/story">
   <p>
     <label for="place">place:</label>
-    <input type="text" name="place" id="place" />
+    <input required type="text" name="place" id="place" />
   </p>
   <p>
-    <label for="noun">noun:</label> <input type="text" name="noun" id="noun" />
+    <label for="noun">noun:</label>
+    <input required type="text" name="noun" id="noun" />
   </p>
   <p>
-    <label for="verb">verb:</label> <input type="text" name="verb" id="verb" />
+    <label for="verb">verb:</label>
+    <input required type="text" name="verb" id="verb" />
   </p>
   <p>
     <label for="adjective">adjective:</label>
-    <input type="text" name="adjective" id="adjective" />
+    <input required type="text" name="adjective" id="adjective" />
   </p>
   <p>
     <label for="plural_noun">plural_noun:</label>
-    <input type="text" name="plural_noun" id="plural_noun" />
+    <input required type="text" name="plural_noun" id="plural_noun" />
   </p>
   <p>
     <input
       type="hidden"
-      name="current_story"
+      name="current_story_sel"
       id="plural_noun"
-      value="{{ current_story_data }}"
+      value="{{ current_story_sel }}"
     />
   </p>
   <button class="btn btn-secondary" type="submit">Submit</button>

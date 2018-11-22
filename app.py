@@ -24,8 +24,9 @@ def dropdown_form():
 @app.route('/form')
 def madlib_form():
     """ input forms for taking all the user information for the madlibs """
-    current_story = request.args.get("selection")
-    return render_template("madlibform.html", current_story_data=current_story)
+    current_story_sel = request.args.get("selection")
+    return render_template(
+        "madlibform.html", current_story_sel=current_story_sel)
 
 
 @app.route('/story')
@@ -33,11 +34,11 @@ def display_story():
     """ displays current story template with inputs from user """
 
     # grab current_story_selection from landing page
-    current_story = request.args.get('current_story')
+    current_story_sel = request.args.get('current_story_sel')
 
     # defines instance of story type
     story = Story(["place", "noun", "verb", "adjective", "plural_noun"],
-                  story_options[current_story])
+                  story_options[current_story_sel])
 
     # create the answers for our story
     answer = {
@@ -50,7 +51,6 @@ def display_story():
 
     # create story string from story generate method
     result = story.generate(answer)
-    print(result)
 
     # render template with our story display html
     return render_template("displaystory.html", complete_story_string=result)
