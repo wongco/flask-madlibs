@@ -7,26 +7,17 @@
 <!-- Body Content -->
 {% block body %}
 <form class="p-2 text-center" action="/story">
+  {% for request_word in request_words %}
   <p>
-    <label for="place">place:</label>
-    <input required type="text" name="place" id="place" />
+    <label for="{{ request_word }}">{{ request_word }}:</label>
+    <input
+      required
+      type="text"
+      name="{{ request_word }}"
+      id="{{ request_word }}"
+    />
   </p>
-  <p>
-    <label for="noun">noun:</label>
-    <input required type="text" name="noun" id="noun" />
-  </p>
-  <p>
-    <label for="verb">verb:</label>
-    <input required type="text" name="verb" id="verb" />
-  </p>
-  <p>
-    <label for="adjective">adjective:</label>
-    <input required type="text" name="adjective" id="adjective" />
-  </p>
-  <p>
-    <label for="plural_noun">plural_noun:</label>
-    <input required type="text" name="plural_noun" id="plural_noun" />
-  </p>
+  {% endfor %}
   <p>
     <input
       type="hidden"

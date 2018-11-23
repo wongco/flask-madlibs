@@ -8,8 +8,8 @@
 {% block body %}
 <form class="p-2" action="/form" method="GET">
   <select class="form-control mb-2" name="title-selection">
-    {% for story in stories_options %}
-    <option value="{{ story['title'] }}">{{ story['title'] }}</option>
+    {% for title in titles %}
+    <option value="{{ title }}">{{ title }}</option>
     {% endfor %}
   </select>
   <button class="btn btn-success" type="submit">Submit</button>
