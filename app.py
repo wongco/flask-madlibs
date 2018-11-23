@@ -6,27 +6,45 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = "oh-so-secret"
 debug = DebugToolbarExtension(app)
 
-story_options = {
-    "first_story":
-    '''Once upon a time in a long-ago {place}, there lived a
-       large {adjective} {noun}. It loved to {verb} {plural_noun}.''',
-    "second_story":
-    '''A long time ago in {place}, there was a microsized {adjective} {noun}. It wished to {verb} {plural_noun}.'''
-}
+# story_options = {
+#     "first_story":
+#     '''Once upon a time in a long-ago {place}, there lived a
+#        large {adjective} {noun}. It loved to {verb} {plural_noun}.''',
+#     "second_story":
+#     '''A long time ago in {place}, there was a microsized {adjective} {noun}. It wished to {verb} {plural_noun}.'''
+# }
+
+story_options = [
+    {
+        "title":
+        "first_story",
+        "words": ["place", "noun", "verb", "adjective", "plural_noun"],
+        "template":
+        """Once upon a time in a long-ago {place}, there lived large    {adjective} {noun}. It loved to {verb} {plural_noun}."""
+    },
+    {
+        "title":
+        "second_story",
+        "words": ["place", "noun", "verb", "adjective", "plural_noun"],
+        "template":
+        """A long time ago in {place}, there was a microsized {adjective} {noun}. It wished to {verb} {plural_noun}."""
+    }
+]
 
 
 @app.route('/')
 def dropdown_form():
     """ dropdown form - creates down down option for story type - then sends you to inputs"""
-    return render_template("dropdown.html", stories=story_options)
+    # story_options is an iterable (ideally)
+    return render_template("dropdown.html", stories_options=story_options)
 
 
 @app.route('/form')
 def madlib_form():
     """ input forms for taking all the user information for the madlibs """
-    current_story_sel = request.args.get("selection")
+    current_story_title = request.args.get("title-selection")
     return render_template(
-        "madlibform.html", current_story_sel=current_story_sel)
+        "madlibform.html", current_story_title=current_story_title)
 
 
 @app.route('/story')
@@ -34,11 +52,21 @@ def display_story():
     """ displays current story template with inputs from user """
 
     # grab current_story_selection from landing page
-    current_story_sel = request.args.get('current_story_sel')
+    current_story_title = request.args.get('current_story_title')
 
     # defines instance of story type
-    story = Story(["place", "noun", "verb", "adjective", "plural_noun"],
-                  story_options[current_story_sel])
+    # story = Story(["place", "noun", "verb", "adjective", "plural_noun"],
+    #               story_options[current_story_sel])
+
+    # find index of story matching current story title
+    target_story_index = -1
+    for story in story_options:
+        if current_story_title == story.get("title"):
+            target_story_index = story_options.index(story)
+            break
+
+    story = Story(story_options[target_story_index]["words"],
+                  story_options[target_story_index]["template"])
 
     # create the answers for our story
     answer = {
