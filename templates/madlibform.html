@@ -6,7 +6,7 @@
 
 <!-- Body Content -->
 {% block body %}
-<form class="p-2 text-center" action="/story">
+<form id="word-input" class="p-2 text-center" action="/story">
   {% for request_word in request_words %}
   <p>
     <label for="{{ request_word }}">{{ request_word }}:</label>
@@ -22,7 +22,7 @@
     <input
       type="hidden"
       name="current_story_title"
-      id="plural_noun"
+      id="current_story_title"
       value="{{ current_story_title }}"
     />
   </p>

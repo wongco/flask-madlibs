@@ -1,28 +1,29 @@
+// helper function for madlibform.html page
+function validateUserInput(event) {
+  // grab all input tags
+  const $input = $('input');
+
+  // iterate over each input element and check if value is of min length (3)
+  $input.each((idx, element) => {
+    const $element = $(element);
+    const valueLength = $element.val().length;
+    if (valueLength < 3) {
+      alert(
+        'Please make sure all input values are at least 3 characters long.'
+      );
+      // prevent submit when values input does not meet requirement
+      event.preventDefault();
+      // returning false will break out of jQuery forEach loop
+      return false;
+    }
+  });
+}
+
 // jQuery Wait for DOM ON Load
 $(function() {
   // frequently used jQuery objects - cache area
   const $card_container = $('#card__container');
 
-  // event listener for validating form submission
-  $card_container.on('submit');
-
-  // on submit action
-  //   grab all values from form elements
-  //   check values if they match specific condition
-  //   if any are invalid, let use know, then return false
-
-  /* Sample Code
-  function validateForm() {
-    var x = document.forms["myForm"]["fname"].value;
-    if (x == "") {
-        alert("Name must be filled out");
-        return false;
-    }
-  } */
-
-  /* Sample HTMl
-  <form name="myForm" action="/action_page.php" onsubmit="return validateForm()" method="post"> 
-    Name: <input type="text" name="fname">
-    <input type="submit" value="Submit">
-  </form>*/
+  // event listener to validate user input
+  $card_container.on('submit', '#word-input', validateUserInput);
 });
