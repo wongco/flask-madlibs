@@ -6,12 +6,27 @@
 
 <!-- Body Content -->
 {% block body %}
+
+<!-- auto-submits current story selection -- this.form.submit() -->
 <form class="p-2" action="/form" method="GET">
-  <select class="form-control mb-2" name="title-selection">
+  <select
+    onchange="this.form.submit()"
+    class="form-control mb-2"
+    name="title-selection"
+  >
+    <!--
+      https://stackoverflow.com/questions/7231157/how-to-submit-form-on-change-of-dropdown-list
+    -->
+    <!--
+      https://stackoverflow.com/questions/8605516/default-select-option-as-blank
+    -->
+    <option disabled selected value> -- select an option -- </option>
     {% for title in titles %}
     <option value="{{ title }}">{{ title }}</option>
     {% endfor %}
   </select>
-  <button class="btn btn-success" type="submit">Submit</button>
+  <button id="story__selection--button" class="btn btn-success" type="submit">
+    Submit
+  </button>
 </form>
 {% endblock%}

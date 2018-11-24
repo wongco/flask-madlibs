@@ -43,3 +43,11 @@ html {
 .madlib__story {
   color: white;
 }
+
+/*-------------------------
+----Story Selection CSS----
+-------------------------*/
+
+#story__selection--button {
+  display: none;
+}
