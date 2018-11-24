@@ -24,6 +24,6 @@ $(function() {
   // frequently used jQuery objects - cache area
   const $card_container = $('#card__container');
 
-  // event listener to validate user input
+  // event listener to validate user input for madlibform.html input words
   $card_container.on('submit', '#word-input', validateUserInput);
 });
