@@ -2,6 +2,10 @@
 ----BootStrap Overrides----
 -------------------------*/
 
+/*-------------------------
+---------HTML Wide--------
+-------------------------*/
+
 html {
   height: 100%;
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#606c88+0,3f4c6b+100;Grey+3D+%232 */
@@ -24,6 +28,18 @@ html {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#606c88', endColorstr='#3f4c6b',GradientType=0 ); /* IE6-9 */
 }
 
+/*-------------------------
+-------Container CSS-----
+-------------------------*/
+
 .container {
   background: transparent;
+}
+
+/*-------------------------
+-----Display Story CSS-----
+-------------------------*/
+
+.madlib__story {
+  color: white;
 }

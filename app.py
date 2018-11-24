@@ -45,10 +45,16 @@ def madlib_form():
     current_story_title = request.args.get("title-selection")
 
     # find index of story matching current story title
+    # target_story_index = -1
+    # for story in story_options:
+    #     if current_story_title == story.get("title"):
+    #         target_story_index = story_options.index(story)
+    #         break
+
     target_story_index = -1
-    for story in story_options:
+    for idx, story in enumerate(story_options):
         if current_story_title == story.get("title"):
-            target_story_index = story_options.index(story)
+            target_story_index = idx
             break
 
     request_words = story_options[target_story_index]["words"]
