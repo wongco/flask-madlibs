@@ -1,5 +1,5 @@
 from stories import Story
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, session
 from flask_debugtoolbar import DebugToolbarExtension
 
 app = Flask(__name__)
@@ -42,40 +42,44 @@ def dropdown_form():
 @app.route('/form')
 def madlib_form():
     """ input forms for taking all the user information for the madlibs """
-    current_story_title = request.args.get("title-selection")
 
+    selected_story_title = request.args.get("title-selection")
+
+    # store current story title in session
+    session['selected_story_title'] = selected_story_title
+
+    # commented out due to better method to find title in story list
     # find index of story matching current story title
     # target_story_index = -1
     # for story in story_options:
-    #     if current_story_title == story.get("title"):
+    #     if selected_story_title == story.get("title"):
     #         target_story_index = story_options.index(story)
     #         break
 
+    # find select story index number
     target_story_index = -1
     for idx, story in enumerate(story_options):
-        if current_story_title == story.get("title"):
+        if selected_story_title == story.get("title"):
             target_story_index = idx
             break
 
+    # pull list of word types needing user input
     request_words = story_options[target_story_index]["words"]
 
-    return render_template(
-        "madlibform.html",
-        current_story_title=current_story_title,
-        request_words=request_words)
+    return render_template("madlibform.html", request_words=request_words)
 
 
 @app.route('/story')
 def display_story():
     """ displays current story template with inputs from user """
 
-    # grab current_story_selection from landing page
-    current_story_title = request.args.get('current_story_title')
+    # retreive current story title from session
+    selected_story_title = session['selected_story_title']
 
     # find index of story matching current story title
     target_story_index = -1
     for story in story_options:
-        if current_story_title == story.get("title"):
+        if selected_story_title == story.get("title"):
             target_story_index = story_options.index(story)
             break
 
